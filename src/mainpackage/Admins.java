@@ -1,50 +1,21 @@
 package mainpackage;
 
-public class Admins {
+public class Admins extends Users{
     // Attributes
-    private String adminName;
-    private String email;
-    private String password;
-    private int adminId;
+    private String adminId;
 
     // Constructor
-    public Admins(String adminName, String email, String password, int adminId) {
-        this.adminName = adminName;
-        this.email = email;
-        this.password = password;
+    public Admins(String name, String username, String password, String email, String adminId) {
+        super(name, username, password, email);
         this.adminId = adminId;
     }
 
-    // Getters and Setters
-    public String getAdminName() {
-        return adminName;
-    }
-
-    public void setAdminName(String adminName) {
-        this.adminName = adminName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public int getAdminId() {
+   // Getters and Setters
+    public String getAdminId() {
         return adminId;
     }
 
-    public void setAdminId(int adminId) {
+    public void setAdminId(String adminId) {
         this.adminId = adminId;
     }
 
