@@ -48,17 +48,18 @@ public class Customers {
         this.reservationId = reservationId;
     }
 
-    // Methods
+ // Methods
     public void showAvailableFilms() {
-       
+        System.out.println("Displaying list of available films.");
+        // Implementation to be added later
     }
 
-    public void makeReservation() {
-    
+    public void makeReservation(String projection, int requestedSlots) {
+        System.out.println(requestedSlots + " seats are booked for the film " + projection);
     }
 
     public void viewReservation() {
-    
+        System.out.println("Viewing reservation details.");
     }
-
 }
+

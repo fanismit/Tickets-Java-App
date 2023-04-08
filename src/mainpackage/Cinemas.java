@@ -37,5 +37,20 @@ public class Cinemas {
     public void setCinemaNumberOfSeats(int cinemaNumberOfSeats) {
         this.cinemaNumberOfSeats = cinemaNumberOfSeats;
     }
+    // Methods
+    public void viewCinemaDetails() {
+        System.out.println("Viewing cinema details.");
+    }
 
+    public void updateCinemaDetails() {
+        System.out.println("Updating cinema details.");
+    }
+
+    public void deleteCinema() {
+        System.out.println("Deleting a cinema.");
+    }
+
+    public void viewAllCinemas() {
+        System.out.println("Viewing all cinemas.");
+    }
 }

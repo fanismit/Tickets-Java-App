@@ -48,18 +48,16 @@ public class ContentAdmins {
         this.cinemaId = cinemaId;
     }
 
-    // Methods
+ // Methods
     public void insertFilm() {
-       
+        System.out.println("Inserting a new film into the system.");
     }
 
     public void deleteFilm() {
-       
+        System.out.println("Deleting a film from the system.");
     }
 
     public void assignFilmToCinema() {
-       
+        System.out.println("Assigning a film to a cinema.");
     }
-
-    
 }

@@ -47,4 +47,22 @@ public class Films {
     public void setFilmDescription(String filmDescription) {
         this.filmDescription = filmDescription;
     }
+
+    // Methods
+    public void viewFilmDetails() {
+    	System.out.println("Viewing film details.");
+    }
+	
+	 public void updateFilmDetails() {
+	     System.out.println("Updating film details.");
+	 }
+	
+	 public void deleteFilm() {
+	     System.out.println("Deleting a film.");
+	 }
+	
+	 public void viewAllFilms() {
+	     System.out.println("Viewing all films.");
+	 }
+
 }

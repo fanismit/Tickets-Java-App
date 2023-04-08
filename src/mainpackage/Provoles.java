@@ -79,5 +79,20 @@ public class Provoles {
     public void setProvoliIsAvailable(boolean provoliIsAvailable) {
         this.provoliIsAvailable = provoliIsAvailable;
     }
+    // Methods
+    public void viewProvoliDetails() {
+        System.out.println("Viewing provoli details.");
+    }
 
+    public void updateProvoliDetails() {
+        System.out.println("Updating provoli details.");
+    }
+
+    public void deleteProvoli() {
+        System.out.println("Deleting a provoli.");
+    }
+
+    public void viewAllProvoles() {
+        System.out.println("Viewing all provoles.");
+    }
 }

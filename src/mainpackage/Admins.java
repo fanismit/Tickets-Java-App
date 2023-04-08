@@ -48,30 +48,28 @@ public class Admins {
         this.adminId = adminId;
     }
 
-    // Methods
+ // Methods
     public void createUser() {
-
+        System.out.println("Creating a new user.");
     }
 
     public void updateUser() {
-
+        System.out.println("Updating user details.");
     }
 
     public void deleteUser() {
-
+        System.out.println("Deleting a user.");
     }
 
     public void searchUser() {
-
+        System.out.println("Searching for a user.");
     }
 
     public void viewAllUsers() {
-
+        System.out.println("Viewing all users.");
     }
 
     public void registerAdmin() {
-
+        System.out.println("Registering a new admin.");
     }
-
-  
 }
