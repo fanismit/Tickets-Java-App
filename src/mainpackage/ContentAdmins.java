@@ -1,53 +1,33 @@
 package mainpackage;
 
-public class ContentAdmins {
+public class ContentAdmins extends Users {
     // Attributes
-    private String adminName;
-    private String email;
-    private int adminId;
-    private int cinemaId;
+    private String adminId;
+    private String cinemaId;
 
     // Constructor
-    public ContentAdmins(String adminName, String email, int adminId, int cinemaId) {
-        this.adminName = adminName;
-        this.email = email;
+    public ContentAdmins(String name, String username, String password, String email, String adminId, String cinemaId) {
+        super(name, username, password, email);
         this.adminId = adminId;
         this.cinemaId = cinemaId;
     }
-
     // Getters and Setters
-    public String getAdminName() {
-        return adminName;
-    }
-
-    public void setAdminName(String adminName) {
-        this.adminName = adminName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getAdminId() {
+    public String getAdminId() {
         return adminId;
     }
 
-    public void setAdminId(int adminId) {
+    public void setAdminId(String adminId) {
         this.adminId = adminId;
     }
-
-    public int getCinemaId() {
+    
+    public String getCinemaId() {
         return cinemaId;
     }
 
-    public void setCinemaId(int cinemaId) {
+    public void setCinemaId(String cinemaId) {
         this.cinemaId = cinemaId;
     }
-
+    
  // Methods
     public void insertFilm() {
         System.out.println("Inserting a new film into the system.");
