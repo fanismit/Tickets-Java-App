@@ -1,52 +1,22 @@
 package mainpackage;
 
-public class Customers {
+public class Customers extends Users {
     // Attributes
-    private String customerName;
-    private String email;
-    private int customerId;
-    private int reservationId;
+    private String reservationId;
+    private int age;
 
     // Constructor
-    public Customers(String customerName, String email, int customerId, int reservationId) {
-        this.customerName = customerName;
-        this.email = email;
-        this.customerId = customerId;
+    public Customers(String name, String username, String password, String email, String reservationId, int age) {
+        super(name, username, password, email);
         this.reservationId = reservationId;
+        this.age = age;
     }
 
     // Getters and Setters
-    public String getCustomerName() {
-        return customerName;
-    }
-
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
-    }
-
-    public int getReservationId() {
+    public String getReservationId() {
         return reservationId;
     }
 
-    public void setReservationId(int reservationId) {
-        this.reservationId = reservationId;
-    }
 
  // Methods
     public void showAvailableFilms() {
