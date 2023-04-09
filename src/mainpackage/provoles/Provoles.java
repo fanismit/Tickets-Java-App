@@ -1,5 +1,8 @@
-package mainpackage;
+package mainpackage.provoles;
 import java.time.LocalDate;
+
+import mainpackage.cinemas.Cinemas;
+import mainpackage.films.Films;
 
 public class Provoles {
     // Attributes

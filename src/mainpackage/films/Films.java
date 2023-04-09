@@ -1,4 +1,4 @@
-package mainpackage;
+package mainpackage.films;
 
 public class Films {
     // Attributes

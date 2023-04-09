@@ -1,4 +1,4 @@
-package mainpackage;
+package mainpackage.users;
 
 public class Admins extends Users{
     // Attributes

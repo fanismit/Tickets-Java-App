@@ -1,3 +1,5 @@
+package mainpackage;
+
 import java.util.Scanner;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
@@ -5,11 +7,11 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         int choice;
+        boolean isRunning= false;
 
-
-        while(true){
+        while(!isRunning){
             System.out.println("######### Ticket-Seats Manager #########");
-            System.out.println("Please, select your option:\n1) Customer\n2) Admin\n3) Content Admin\n4) Film\n5) Cinema\n6) Provoles ");
+            System.out.println("Please, select your option:\n1) Customer\n2) Admin\n3) Content Admin");
             Scanner choiceInput = new Scanner(System.in);
             choice = choiceInput.nextInt();
 
@@ -18,22 +20,15 @@ public class Main {
                     System.out.println("Customer Option Selected!");
                     // login
                     // Menu for Customer (show available films, make reservation, update Info, ...)
-
+                    isRunning=true;
                     break;
                 case 2:
                     System.out.println("Admin Option Selected!");
+                    isRunning=true;
                     break;
                 case 3:
                     System.out.println("Content Admin Option Selected!");
-                    break;
-                case 4:
-                    System.out.println("Film Option Selected!");
-                    break;
-                case 5:
-                    System.out.println("Cinema Option Selected!");
-                    break;
-                case 6:
-                    System.out.println("Provoles Option Selected!");
+                    isRunning=true;
                     break;
                 default:
                     return;
