@@ -1,5 +1,7 @@
 package mainpackage.users;
 
+import mainpackage.Main;
+
 public class Admins extends Users{
     // Attributes
     private static int nextId = 0;
@@ -19,9 +21,8 @@ public class Admins extends Users{
     // Methods
     public void createUser(boolean isCustomer) {
         if (isCustomer){
-            //Customers customer = new Customers();
+        	
         }else{
-
         }
         System.out.println("Creating a new user.");
     }

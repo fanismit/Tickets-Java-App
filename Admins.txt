@@ -1,0 +1,10 @@
+Name: John
+Username: john123
+Password: john123!K
+Email: john123@gmail.com
+
+Name: Marry
+Username: marry23
+Password: Marry123!
+Email: marry23@gmail.com
+

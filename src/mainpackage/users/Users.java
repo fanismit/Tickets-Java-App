@@ -41,7 +41,6 @@ public class Users {
 				email = input.nextLine();
 			}else break;
 		}
-		input.close();
 	}
 
 	// Getters and Setters
