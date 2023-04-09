@@ -39,7 +39,6 @@ public class ContentAdmins extends Users {
         System.out.println("Please Enter Film's Description:");
         String filmDescription = input.nextLine();
 
-        input.close();
         // Create a new film object
         Films newFilm = new Films(filmTitle,filmCategory,filmDescription);
         films.add(newFilm);
@@ -96,6 +95,7 @@ public class ContentAdmins extends Users {
             if(cinemaNumberOfSeats<=0){
                 System.out.println("Invalid input. Number must be positive!");
             }
+            input.nextLine();
         }
 
         Cinemas newCinema = new Cinemas(cinemaIs3D,cinemaNumberOfSeats,cinemaLocation);
