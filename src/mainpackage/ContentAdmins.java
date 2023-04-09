@@ -53,10 +53,27 @@ public class ContentAdmins extends Users {
     }
 
     public void deleteFilm(int filmId) {
-        // Films filmToDelete =
+        Films filmToDelete=null;
+
+        // Search for the film to be deleted inside the films array
+        for(Films film: films){
+            if (film.getFilmId() == filmId){
+                filmToDelete = film;
+                break;
+            }
+        }
+
+        // Check if film can be deleted
+        if(filmToDelete!=null){
+            films.remove(filmToDelete);
+            System.out.println("Film with Id "+filmId+" was deleted successfully!");
+        }else{
+            System.out.println("Film not found!");
+        }
     }
 
-    public void assignFilmToCinema() {
-        System.out.println("Assigning a film to a cinema.");
+    public void assignFilmToCinema(Films film, Cinemas cinema) {
+        cinema.addFilm(film);
+        System.out.println("The film " + film.getFilmTitle() + " was assigned to cinema " + cinema.getCinemaId());
     }
 }
