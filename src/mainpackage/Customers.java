@@ -1,15 +1,15 @@
 package mainpackage;
 
+import java.util.ArrayList;
+
 public class Customers extends Users {
     // Attributes
     private String reservationId;
-    private int age;
 
     // Constructor
-    public Customers(String name, String username, String password, String email, String reservationId, int age) {
-        super(name, username, password, email);
+    public Customers(String reservationId) {
+        super();
         this.reservationId = reservationId;
-        this.age = age;
     }
 
     // Getters and Setters
@@ -18,10 +18,12 @@ public class Customers extends Users {
     }
 
 
- // Methods
-    public void showAvailableFilms() {
-        System.out.println("Displaying list of available films.");
-        // Implementation to be added later
+    // Methods
+    public void showAvailableFilms(ArrayList<Films> films) {
+        System.out.println("Displaying list of available films:");
+        for (Films film: films){
+            System.out.println("Title: " +film.getFilmTitle()+ "Category: " + film.getFilmCategory() + "Description: "+film.getFilmDescription());
+        }
     }
 
     public void makeReservation(String projection, int requestedSlots) {
