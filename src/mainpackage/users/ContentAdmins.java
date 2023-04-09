@@ -28,6 +28,45 @@ public class ContentAdmins extends Users {
         return films;
     }
     // Methods
+    public void insertCinema(){
+
+        boolean cinemaIs3D;
+        int cinemaNumberOfSeats = 0;
+
+        System.out.println("Enter Cinema's Location: ");
+        String cinemaLocation = input.nextLine();
+
+        // Check User input is 'Yes' or 'No'
+        System.out.println("Is The Cinema 3D? ");
+        String strCinemaIs3D = input.nextLine();
+        while(!(strCinemaIs3D.equals("Yes")||strCinemaIs3D.equals("No"))){
+            System.out.println("Please Enter 'Yes' or 'No'!");
+            strCinemaIs3D = input.nextLine();
+        }
+
+        cinemaIs3D = strCinemaIs3D.equals("Yes");
+
+     // Check if capacity is a positive number
+        while(cinemaNumberOfSeats <= 0) {
+            System.out.println("Please enter the capacity of the cinema");
+            while(!input.hasNextInt()){
+                System.out.println("Invalid input. Please enter a number!");
+                input.nextLine(); // Consume the entire line of input, including non-integer token
+            }
+            cinemaNumberOfSeats = input.nextInt();
+            if(cinemaNumberOfSeats <= 0){
+                System.out.println("Invalid input. Number must be positive!");
+            }
+            input.nextLine(); // Consume the newline character after reading the integer
+        }
+
+
+        Cinemas newCinema = new Cinemas(cinemaIs3D,cinemaNumberOfSeats,cinemaLocation);
+        cinemas.add(newCinema);
+
+        System.out.println("A new Cinema with Id " + newCinema.getCinemaId() +" located in "+ newCinema.getCinemaLocation() + " was inserted!");
+    }
+
     public void insertFilm() {
 
         System.out.println("Please Enter Film Name:");
@@ -39,7 +78,7 @@ public class ContentAdmins extends Users {
         System.out.println("Please Enter Film's Description:");
         String filmDescription = input.nextLine();
 
-        input.close();
+        //input.close();
         // Create a new film object
         Films newFilm = new Films(filmTitle,filmCategory,filmDescription);
         films.add(newFilm);
@@ -67,42 +106,6 @@ public class ContentAdmins extends Users {
         }
     }
 
-    public void insertCinema(){
-
-        boolean cinemaIs3D;
-        int cinemaNumberOfSeats = 0;
-
-        System.out.println("Enter Cinema's Location: ");
-        String cinemaLocation = input.nextLine();
-
-        // Check User input is 'Yes' or 'No'
-        System.out.println("Is The Cinema 3D? ");
-        String strCinemaIs3D = input.nextLine();
-        while(!(strCinemaIs3D.equals("Yes")||strCinemaIs3D.equals("No"))){
-            System.out.println("Please Enter 'Yes' or 'No'!");
-            strCinemaIs3D = input.nextLine();
-        }
-
-        cinemaIs3D = strCinemaIs3D.equals("Yes");
-
-        // Check if capacity is a positive number
-        while(cinemaNumberOfSeats<=0) {
-            System.out.println("Please enter the capacity of the cinema");
-            while(!input.hasNextInt()){
-                System.out.println("Invalid input. Please enter a number!");
-                input.next();
-            }
-            cinemaNumberOfSeats = input.nextInt();
-            if(cinemaNumberOfSeats<=0){
-                System.out.println("Invalid input. Number must be positive!");
-            }
-        }
-
-        Cinemas newCinema = new Cinemas(cinemaIs3D,cinemaNumberOfSeats,cinemaLocation);
-        cinemas.add(newCinema);
-
-        System.out.println("A new Cinema with Id " + newCinema.getCinemaId() +" located in "+ newCinema.getCinemaLocation() + " was inserted!");
-    }
 
     public void assignFilmToCinema() {
 

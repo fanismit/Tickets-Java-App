@@ -44,6 +44,10 @@ public class Main {
                     isRunning=true;
                     role="ContentAdmin";
                     ContentAdmins contentadmin = new ContentAdmins();
+                    contentadmin.insertCinema();
+                    contentadmin.insertFilm();
+                    contentadmin.assignFilmToCinema();
+                    
                     break;
                 default:
                     return;
