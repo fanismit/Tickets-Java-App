@@ -1,4 +1,8 @@
-package mainpackage;
+package mainpackage.cinemas;
+
+import java.util.ArrayList;
+
+import mainpackage.films.Films;
 
 public class Cinemas {
     // Attributes

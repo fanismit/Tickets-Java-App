@@ -1,6 +1,8 @@
-package mainpackage;
+package mainpackage.users;
 
 import java.util.ArrayList;
+import mainpackage.cinemas.Cinemas;
+import mainpackage.films.Films;
 
 public class Customers extends Users {
     // Attributes

@@ -1,6 +1,7 @@
-package mainpackage;
+package mainpackage.users;
 
 import java.util.Scanner;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -27,13 +28,7 @@ public class Users {
 		password = input.nextLine();
 		while(true){
 			if(!passwordIsValid(password)){
-				System.out.println("""
-                        Password Must Have at Least:\s
-                        1) one Upper case letter
-                        2) one Lower case letter
-                        3) one Digit
-                        4) one Special character
-                        5) 8 characters""");
+				System.out.println("Password Must Have at Least:\n1) one Upper case letter\n2) one Lower case letter\n3) one Digit\n4) one Special character\n5) 8 characters");
 				password = input.nextLine();
 			}else break;
 		}

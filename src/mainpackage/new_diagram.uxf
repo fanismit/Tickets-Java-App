@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1.0">
+  <zoom_level>3</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>183</x>
+      <y>462</y>
+      <w>147</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>mainpackage.provoles::Provoles
+--
+-provoliID: int
+-provoliFilm: Films
+-provoliCinema: Cinemas
+-provoliStartDate: LocalDate
+-provoliEndDate: LocalDate
+-provoliNumberOfReservations: int
+-provoliIsAvailable: boolean
+--
++Provoles(int provoliID, Films provoliFilm, Cinemas provoliCinema, LocalDate provoliStartDate, LocalDate provoliEndDate, int provoliNumberOfReservations, boolean provoliIsAvailable): ctor
++getProvoliID(): int
++setProvoliID(int provoliID): void
++getProvoliFilm(): Films
++setProvoliFilm(Films provoliFilm): void
++getProvoliCinema(): Cinemas
++setProvoliCinema(Cinemas provoliCinema): void
++getProvoliStartDate(): LocalDate
++setProvoliStartDate(LocalDate provoliStartDate): void
++getProvoliEndDate(): LocalDate
++setProvoliEndDate(LocalDate provoliEndDate): void
++getProvoliNumberOfReservations(): int
++setProvoliNumberOfReservations(int provoliNumberOfReservations): void
++isProvoliIsAvailable(): boolean
++setProvoliIsAvailable(boolean provoliIsAvailable): void
++displayProvoliDetails(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>648</x>
+      <y>495</y>
+      <w>153</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>mainpackage.cinemas::Cinemas
+--
+-cinemaId: int
+-cinemaIs3D: boolean
+-cinemaNumberOfSeats: int
+-films: ArrayList&lt;Films&gt;
+--
++Cinemas(int cinemaId, boolean cinemaIs3D, int cinemaNumberOfSeats): ctor
++getCinemaId(): int
++setCinemaId(int cinemaId): void
++isCinemaIs3D(): boolean
++setCinemaIs3D(boolean cinemaIs3D): void
++getCinemaNumberOfSeats(): int
++setCinemaNumberOfSeats(int cinemaNumberOfSeats): void
++getFilms(): ArrayList&lt;Films&gt;
++addFilm(Films film): void
++viewCinemaDetails(): void
++updateCinemaDetails(): void
++deleteCinema(): void
++viewAllCinemas(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>486</x>
+      <y>495</y>
+      <w>156</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>mainpackage.films::Films
+--
+-filmId: int
+-filmTitle: String
+-filmCategory: String
+-filmDescription: String
+--
++Films(int filmId, String filmTitle, String filmCategory, String filmDescription): ctor
++getFilmId(): int
++setFilmId(int filmId): void
++getFilmTitle(): String
++setFilmTitle(String filmTitle): void
++getFilmCategory(): String
++setFilmCategory(String filmCategory): void
++getFilmDescription(): String
++setFilmDescription(String filmDescription): void
++viewFilmDetails(): void
++updateFilmDetails(): void
++deleteFilm(): void
++viewAllFilms(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>351</x>
+      <y>495</y>
+      <w>111</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>mainpackage.users::Users
+--
+~name, username, password, email: String
+--
++Users(): ctor
++getName(): String
++setName(String name): void
++getUsername(): String
++setUsername(String username): void
++getPassword(): String
++setPassword(String password): void
++getEmail(): String
++setEmail(String email): void
++login(String username, String password): boolean
++logout(): void
++userExists(String username, String password): boolean
+-emailIsValid(String email): boolean
+-nameIsValid(String name): boolean
+-passwordIsValid(String password): boolean
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>240</x>
+      <y>639</y>
+      <w>102</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>mainpackage.users::Admins
+--
+-adminId: int
+--
++Admins(int adminId): ctor
++getAdminId(): int
++setAdminId(int adminId): void
++createUser(boolean isCustomer): void
++updateUser(): void
++deleteUser(String username, String adminId): void
++searchUser(): void
++viewAllUsers(): void
++registerAdmin(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>348</x>
+      <y>639</y>
+      <w>111</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>mainpackage.users::ContentAdmins
+--
+-adminId: int
+-films = new ArrayList(): ArrayList&lt;Films&gt;
+--
++ContentAdmins(int adminId): ctor
++getAdminId(): int
++setAdminId(int adminId): void
++getFilms(): ArrayList&lt;Films&gt;
++insertFilm(): void
++deleteFilm(int filmId): void
++assignFilmToCinema(Films film, Cinemas cinema): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>468</x>
+      <y>639</y>
+      <w>120</w>
+      <h>57</h>
+    </coordinates>
+    <panel_attributes>mainpackage.users::Customers
+--
+-reservationId: String
+--
++Customers(String reservationId): ctor
++getReservationId(): String
++showAvailableFilms(ArrayList&lt;Films&gt; films): void
++makeReservation(String projection, int requestedSlots): void
++viewReservation(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>807</x>
+      <y>498</y>
+      <w>54</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>mainpackage::Main
+--
+--
++main(String[] args): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>285</x>
+      <y>591</y>
+      <w>117</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>370.0;10.0;220.0;80.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>402</x>
+      <y>591</y>
+      <w>9</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>414</x>
+      <y>591</y>
+      <w>123</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;390.0;160.0</additional_attributes>
+  </element>
+</diagram>

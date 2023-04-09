@@ -1,7 +1,12 @@
-package mainpackage;
+package mainpackage.users;
+
+import mainpackage.cinemas.Cinemas;
+import mainpackage.films.Films;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+
 public class ContentAdmins extends Users {
     // Attributes
     private static int nextId = 0;
