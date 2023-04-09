@@ -48,6 +48,7 @@ public class Users {
 	public boolean login(String username, String password) {
 		// Check if user exists
 		if (userExists(username, password)) {
+			System.out.println("User " + this.username + " logged in.");
 			return true;
 		} else {
 			return false;
@@ -55,7 +56,7 @@ public class Users {
 	}
 
 	public void logout() {
-
+		System.out.println("User " + this.username + " logged out.");
 	}
 
 	public boolean userExists(String username, String password) {
