@@ -13,7 +13,7 @@ public class ContentAdmins extends Users {
     private final int adminId;
     private ArrayList<Films> films = new ArrayList();
     private ArrayList<Cinemas> cinemas = new ArrayList();
-
+    private static Scanner input = new Scanner(System.in);
     // Constructor
     public ContentAdmins() {
         super();
@@ -29,8 +29,6 @@ public class ContentAdmins extends Users {
     }
     // Methods
     public void insertFilm() {
-
-        Scanner input  = new Scanner(System.in);
 
         System.out.println("Please Enter Film Name:");
         String filmTitle = input.nextLine();
@@ -71,18 +69,34 @@ public class ContentAdmins extends Users {
 
     public void insertCinema(){
 
-        Scanner input = new Scanner(System.in);
+        boolean cinemaIs3D;
+        int cinemaNumberOfSeats = 0;
 
         System.out.println("Enter Cinema's Location: ");
         String cinemaLocation = input.nextLine();
 
-        System.out.print("Is The Cinema 3D? ");
-        boolean cinemaIs3D = input.nextBoolean();
+        // Check User input is 'Yes' or 'No'
+        System.out.println("Is The Cinema 3D? ");
+        String strCinemaIs3D = input.nextLine();
+        while(!(strCinemaIs3D.equals("Yes")||strCinemaIs3D.equals("No"))){
+            System.out.println("Please Enter 'Yes' or 'No'!");
+            strCinemaIs3D = input.nextLine();
+        }
 
-        System.out.print("Enter Cinema's Number of Seats: ");
-        int cinemaNumberOfSeats = input.nextInt();
+        cinemaIs3D = strCinemaIs3D.equals("Yes");
 
-        //input.close();
+        // Check if capacity is a positive number
+        while(cinemaNumberOfSeats<=0) {
+            System.out.println("Please enter the capacity of the cinema");
+            while(!input.hasNextInt()){
+                System.out.println("Invalid input. Please enter a number!");
+                input.next();
+            }
+            cinemaNumberOfSeats = input.nextInt();
+            if(cinemaNumberOfSeats<=0){
+                System.out.println("Invalid input. Number must be positive!");
+            }
+        }
 
         Cinemas newCinema = new Cinemas(cinemaIs3D,cinemaNumberOfSeats,cinemaLocation);
         cinemas.add(newCinema);
@@ -91,10 +105,9 @@ public class ContentAdmins extends Users {
     }
 
     public void assignFilmToCinema() {
-        Scanner input = new Scanner(System.in);
 
         //Ask for cinema input
-        System.out.println("Enter Cinema Id: ");
+        System.out.println("Enter an existing cinema Id: ");
         int cinemaId = input.nextInt();
 
         // Find cinema in array cinemas
