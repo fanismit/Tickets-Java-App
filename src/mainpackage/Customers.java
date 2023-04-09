@@ -21,7 +21,6 @@ public class Customers extends Users {
  // Methods
     public void showAvailableFilms() {
         System.out.println("Displaying list of available films.");
-        // Implementation to be added later
     }
 
     public void makeReservation(String projection, int requestedSlots) {
