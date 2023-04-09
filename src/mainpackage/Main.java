@@ -103,6 +103,10 @@ public class Main {
                     System.out.println("Content Admin Option Selected!");
                     MenuIsRunning=true;
                     ContentAdmins contentadmin = new ContentAdmins();
+                    contentadmin.insertCinema();
+                    contentadmin.insertFilm();
+                    contentadmin.assignFilmToCinema();
+                    
                     break;
                 default:
                     return;

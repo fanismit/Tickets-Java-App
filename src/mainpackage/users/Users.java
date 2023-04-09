@@ -1,7 +1,11 @@
 package mainpackage.users;
 
 import java.util.Scanner;
-
+import java.io.FileWriter;
+import java.io.FileReader;
+import java.io.BufferedWriter;
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -78,9 +82,9 @@ public class Users {
 	}
 
 	// Methods
-	public boolean login(String username, String password) {
+	public boolean login(String username, String password, String filename) {
 		// Check if user exists
-		if (userExists(username, password)) {
+		if (userExists(username, password, filename)) {
 			System.out.println("User Exists/Welcome"+username);
 			return true;
 		} else {
@@ -93,10 +97,24 @@ public class Users {
 		// Under implimentation
 	}
 
-	public boolean userExists(String username, String password) {
-		// Search credentials in a database or file
-		// Use search algorithm
-		return true;
+	public boolean userExists(String username, String password, String filename) {
+		try {
+			// Read the file line by line
+			BufferedReader bufferedReader = new BufferedReader(new FileReader(filename));
+			String line;
+			while ((line = bufferedReader.readLine()) != null) {
+				// Check if the line contains the provided username and password
+				if (line.contains("Username: " + username) && line.contains("Password: " + password)) {
+					bufferedReader.close();
+					return true; // User exists
+				}
+			}
+			bufferedReader.close();
+		} catch (IOException e) {
+			System.out.println("Error occurred while reading the file.");
+			e.printStackTrace();
+		}
+		return false; 
 	}
 
 	private static boolean emailIsValid(String email){
