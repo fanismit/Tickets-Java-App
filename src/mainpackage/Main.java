@@ -36,6 +36,7 @@ public class Main {
                     //customer.login();
                     // if login successfully continue
                     //else go back to menu
+                    System.out.println("Customer Option Selected!");
                     System.out.println("######### Customer Options Menu #########");
                     System.out.println("Please, select your action:\n1) Show Available Films\2) Make Reservation\n3) View Reservation");
                     action = actionInput.nextInt();
@@ -64,9 +65,9 @@ public class Main {
                     //admin.login()
                     // if login successfully continue
                     //else go back to menu
+                    System.out.println("Admin Option Selected!");
                     System.out.println("######### Admins Option Menu #########");
                     System.out.println("Please, select your option:\n1) Create user\n2) Update user\n3) Delete user\n4) Search User\n5) View all users\n6) Register Admin");
-                    System.out.println("Admin Option Selected!");
                     action = actionInput.nextInt();
                     switch (action){
                         case 1:
@@ -100,13 +101,36 @@ public class Main {
                     saveToFile(admin, "Admins.txt");
                     break;
                 case 3:
-                    System.out.println("Content Admin Option Selected!");
+                	ContentAdmins contentadmins = new ContentAdmins();
+                    //contentadmins.login()
+                    // if login successfully continue
+                    //else go back to menu
+                	System.out.println("Content Admin Option Selected!");
+                    System.out.println("######### ContentAdmins Option Menu #########");
+                    System.out.println("Please, select your option:\n1) Insert film\n2) Delete Film\n3) Insert cinema\n4) Assign film to cinema");
+                    action = actionInput.nextInt();
+                    switch (action){
+                        case 1:
+                            System.out.println("Insert Film Option Selected!");
+                            //contentadmins.insertFilm();
+                            break;
+                        case 2:
+                            System.out.println("Delete Film Option Selected!");
+                            //contentadmins.updateUser();
+                            break;
+                        case 3:
+                            System.out.println("Insert cinema Option Selected!");
+                            //contentadmins.insertCinema();
+                            break;
+                        case 4:
+                            System.out.println("Assign film to cinema Option Selected!");
+                            //contentadmins.assignFilmToCinema();
+                            break;
+                        default:
+                            return;
+                    }
                     MenuIsRunning=true;
-                    ContentAdmins contentadmin = new ContentAdmins();
-                    contentadmin.insertCinema();
-                    contentadmin.insertFilm();
-                    contentadmin.assignFilmToCinema();
-                    
+                    saveToFile(contentadmins, "contentAdmins.txt");
                     break;
                 default:
                     return;
