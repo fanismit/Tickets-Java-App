@@ -80,19 +80,13 @@ public class Provoles {
         this.provoliIsAvailable = provoliIsAvailable;
     }
     // Methods
-    public void viewProvoliDetails() {
-        System.out.println("Viewing provoli details.");
-    }
-
-    public void updateProvoliDetails() {
-        System.out.println("Updating provoli details.");
-    }
-
-    public void deleteProvoli() {
-        System.out.println("Deleting a provoli.");
-    }
-
-    public void viewAllProvoles() {
-        System.out.println("Viewing all provoles.");
+    public void displayProvoliDetails() {
+        System.out.println("Provoli ID: " + provoliID);
+        System.out.println("Film Title: " + provoliFilm);
+        System.out.println("Cinema: " + provoliCinema);
+        System.out.println("Start Date: " + provoliStartDate);
+        System.out.println("End Date: " + provoliEndDate);
+        System.out.println("Number of Reservations: " + provoliNumberOfReservations);
+        System.out.println("Availability: " + provoliIsAvailable);
     }
 }
