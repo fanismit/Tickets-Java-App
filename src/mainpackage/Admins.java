@@ -2,21 +2,18 @@ package mainpackage;
 
 public class Admins extends Users{
     // Attributes
-    static private int adminId;
+    private static int nextId = 0;
+    private final int adminId;
 
     // Constructor
-    public Admins(int adminId) {
+    public Admins() {
         super();
-        this.adminId = adminId;
+        this.adminId = nextId++;
     }
 
     // Getters and Setters
     public int getAdminId() {
         return adminId;
-    }
-
-    public void setAdminId(int adminId) {
-        this.adminId = adminId;
     }
 
     // Methods

@@ -2,67 +2,52 @@ package mainpackage;
 
 public class Films {
     // Attributes
-    private int filmId;
+    private static int nextId = 0;
+    private final int filmId;
     private String filmTitle;
     private String filmCategory;
     private String filmDescription;
 
     // Constructor
-    public Films(int filmId, String filmTitle, String filmCategory, String filmDescription) {
-        this.filmId = filmId;
+    public Films(String filmTitle, String filmCategory, String filmDescription) {
+        this.filmId = nextId++;
         this.filmTitle = filmTitle;
         this.filmCategory = filmCategory;
         this.filmDescription = filmDescription;
     }
 
-    // Getters and Setters
+    // Getters
     public int getFilmId() {
         return filmId;
-    }
-
-    public void setFilmId(int filmId) {
-        this.filmId = filmId;
     }
 
     public String getFilmTitle() {
         return filmTitle;
     }
 
-    public void setFilmTitle(String filmTitle) {
-        this.filmTitle = filmTitle;
-    }
-
     public String getFilmCategory() {
         return filmCategory;
-    }
-
-    public void setFilmCategory(String filmCategory) {
-        this.filmCategory = filmCategory;
     }
 
     public String getFilmDescription() {
         return filmDescription;
     }
 
-    public void setFilmDescription(String filmDescription) {
-        this.filmDescription = filmDescription;
-    }
-
     // Methods
     public void viewFilmDetails() {
-    	System.out.println("Viewing film details.");
+        System.out.println("Viewing film details.");
     }
-	
-	 public void updateFilmDetails() {
-	     System.out.println("Updating film details.");
-	 }
-	
-	 public void deleteFilm() {
-	     System.out.println("Deleting a film.");
-	 }
-	
-	 public void viewAllFilms() {
-	     System.out.println("Viewing all films.");
-	 }
+
+    public void updateFilmDetails() {
+        System.out.println("Updating film details.");
+    }
+
+    public void deleteFilm() {
+        System.out.println("Deleting a film.");
+    }
+
+    public void viewAllFilms() {
+        System.out.println("Viewing all films.");
+    }
 
 }

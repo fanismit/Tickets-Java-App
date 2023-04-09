@@ -2,16 +2,19 @@ package mainpackage;
 
 public class Cinemas {
     // Attributes
-    private int cinemaId;
+    private static int nextId = 0;
+    private final int cinemaId;
     private boolean cinemaIs3D;
     private int cinemaNumberOfSeats;
+    private String cinemaLocation;
     private ArrayList<Films> films;
 
     // Constructor
-    public Cinemas(int cinemaId, boolean cinemaIs3D, int cinemaNumberOfSeats) {
-        this.cinemaId = cinemaId;
+    public Cinemas(boolean cinemaIs3D, int cinemaNumberOfSeats, String cinemaLocation) {
+        this.cinemaId = nextId++;
         this.cinemaIs3D = cinemaIs3D;
         this.cinemaNumberOfSeats = cinemaNumberOfSeats;
+        this.cinemaLocation = cinemaLocation;
         this.films = new ArrayList<>();
     }
 
@@ -20,25 +23,15 @@ public class Cinemas {
         return cinemaId;
     }
 
-    public void setCinemaId(int cinemaId) {
-        this.cinemaId = cinemaId;
-    }
-
     public boolean isCinemaIs3D() {
         return cinemaIs3D;
-    }
-
-    public void setCinemaIs3D(boolean cinemaIs3D) {
-        this.cinemaIs3D = cinemaIs3D;
     }
 
     public int getCinemaNumberOfSeats() {
         return cinemaNumberOfSeats;
     }
 
-    public void setCinemaNumberOfSeats(int cinemaNumberOfSeats) {
-        this.cinemaNumberOfSeats = cinemaNumberOfSeats;
-    }
+    public String getCinemaLocation(){return cinemaLocation;}
 
     public ArrayList<Films> getFilms() {
         return films;

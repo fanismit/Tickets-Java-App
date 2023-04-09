@@ -95,7 +95,7 @@ public class Users {
 	}
 
 	public void logout() {
-
+		// Under implimentation
 	}
 
 	public boolean userExists(String username, String password) {
@@ -105,6 +105,7 @@ public class Users {
 	}
 
 	private static boolean emailIsValid(String email){
+		// Email pattern
 		String emailPattern = "^[a-zA-Z0-9_+&*-]+(?:\\." +
 				"[a-zA-Z0-9_+&*-]+)*@" +
 				"(?:[a-zA-Z0-9-]+\\.)+[a-z" +
@@ -117,7 +118,7 @@ public class Users {
 	}
 
 	private static boolean nameIsValid(String name){
-		return name.matches("[a-zA-Z]+");
+		return name.matches("[a-zA-Z]+"); // Name must have only letters
 	}
 
 	private static boolean passwordIsValid(String password){
@@ -133,13 +134,18 @@ public class Users {
 		boolean hasLowerChar = false;
 		boolean hasDigit = false;
 		boolean hasSpecialChar = false;
-		String pattern = "[^a-zA-Z0-9]";
+		
+		String pattern = "[^a-zA-Z0-9]"; // Exclude all the characters instead of the special chars
+		
 		Pattern p = Pattern.compile(pattern);
 		Matcher m = p.matcher(password);
 
+		// Check if password has a special char
 		if (m.find()){
 			hasSpecialChar = true;
 		}
+		
+		// Check for Lower, Upper case chars and digits
 		for(char c: password.toCharArray()) {
 			if (Character.isUpperCase(c)) {
 				hasUpperChar = true;
