@@ -16,15 +16,15 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) {
         int role, action;
-        Scanner roleInput = new Scanner(System.in);
-        Scanner actionInput = new Scanner(System.in);
+        //Scanner roleInput = new Scanner(System.in);
+        //Scanner actionInput = new Scanner(System.in);
 
         boolean MenuIsRunning= false;
 
         while(!MenuIsRunning){
             System.out.println("######### Ticket-Seats Manager #########");
-            System.out.println("Please, select your role:\n1)Customer\n2)Admin\n3)ContentAdmin");
-            role = roleInput.nextInt();
+            // Ask for input and validate it
+            role = checkIntegerInputs("Please, select your role:\n1)Customer\n2)Admin\n3)ContentAdmin");
 
             switch (role){
                 case 1:
@@ -35,8 +35,7 @@ public class Main {
                     //else go back to menu
                     System.out.println("Customer Option Selected!");
                     System.out.println("######### Customer Options Menu #########");
-                    System.out.println("Please, select your action:\n1) Show Available Films\n2) Make Reservation\n3) View Reservation");
-                    action = actionInput.nextInt();
+                    action = checkIntegerInputs("Please, select your action:\n1) Show Available Films\n2) Make Reservation\n3) View Reservation");
 
                     switch (action){
                         case 1:
@@ -64,8 +63,7 @@ public class Main {
                     //else go back to menu
                     System.out.println("Admin Option Selected!");
                     System.out.println("######### Admins Option Menu #########");
-                    System.out.println("Please, select your option:\n1) Create user\n2) Update user\n3) Delete user\n4) Search User\n5) View all users\n6) Register Admin");
-                    action = actionInput.nextInt();
+                    action = checkIntegerInputs("Please, select your option:\n1) Create user\n2) Update user\n3) Delete user\n4) Search User\n5) View all users\n6) Register Admin");
                     switch (action){
                         case 1:
                             System.out.println("Create user Option Selected!");
@@ -98,14 +96,13 @@ public class Main {
                     saveToFile(admin, "Admins.txt");
                     break;
                 case 3:
-                	ContentAdmins contentadmins = new ContentAdmins();
+                    ContentAdmins contentadmins = new ContentAdmins();
                     //contentadmins.login()
                     // if login successfully continue
                     //else go back to menu
-                	System.out.println("Content Admin Option Selected!");
+                    System.out.println("Content Admin Option Selected!");
                     System.out.println("######### ContentAdmins Option Menu #########");
-                    System.out.println("Please, select your option:\n1) Insert film\n2) Delete Film\n3) Insert cinema\n4) Assign film to cinema");
-                    action = actionInput.nextInt();
+                    action = checkIntegerInputs("Please, select your option:\n1) Insert film\n2) Delete Film\n3) Insert cinema\n4) Assign film to cinema");
                     switch (action){
                         case 1:
                             System.out.println("Insert Film Option Selected!");
@@ -127,12 +124,29 @@ public class Main {
                             return;
                     }
                     MenuIsRunning=true;
-                   //saveToFile(contentadmins, "contentAdmins.txt");
+                    //saveToFile(contentadmins, "contentAdmins.txt");
                     break;
                 default:
-                    return;
+                    System.out.println("Invalid input. Please enter a valid selection.");
             }
         }
+    }
+
+    public static int checkIntegerInputs(String message){
+        int role;
+        Scanner roleInput = new Scanner(System.in);
+        System.out.println(message);
+        while (true) {
+            try {
+                role = roleInput.nextInt();
+                break;
+            } catch (Exception e) {
+                System.out.println("Invalid input. Please enter a valid selection.");
+                roleInput.next(); // consume the invalid input
+            }
+        }
+
+        return role;
     }
     public static void saveToFile(Users users, String filename) {
         try {
