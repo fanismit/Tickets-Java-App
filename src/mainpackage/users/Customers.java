@@ -9,16 +9,15 @@ public class Customers extends Users {
     private String reservationId;
 
     // Constructor
-    public Customers(String reservationId) {
+    public Customers() {
         super();
-        this.reservationId = reservationId;
+        // reservationId will be set when makeReservation method is called
     }
 
     // Getters and Setters
     public String getReservationId() {
         return reservationId;
     }
-
 
     // Methods
     public void showAvailableFilms(ArrayList<Films> films) {
@@ -29,11 +28,15 @@ public class Customers extends Users {
     }
 
     public void makeReservation(String projection, int requestedSlots) {
-        System.out.println(requestedSlots + " seats are booked for the film " + projection);
+        // Increase reservationId by one for every reservation
+        int reservationIdInt = Integer.parseInt(reservationId == null ? "0" : reservationId);
+        reservationIdInt++;
+        reservationId = Integer.toString(reservationIdInt);
+
+        System.out.println(requestedSlots + " seats are booked for the film " + projection + "with the code "+ reservationId);
     }
 
     public void viewReservation() {
         System.out.println("Viewing reservation details.");
     }
 }
-

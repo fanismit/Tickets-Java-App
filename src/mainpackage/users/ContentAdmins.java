@@ -3,6 +3,9 @@ package mainpackage.users;
 import mainpackage.cinemas.Cinemas;
 import mainpackage.films.Films;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -44,6 +47,23 @@ public class ContentAdmins extends Users {
         films.add(newFilm);
 
         System.out.println("A new film with name " + filmTitle +" and Id "+newFilm.getFilmId() + " was inserted!");
+    
+     // Save film data to txt file
+        try (FileWriter fileWriter = new FileWriter("Films.txt", true);
+        	BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
+        	bufferedWriter.write("Film Title: " + filmTitle + "\n");
+        	bufferedWriter.write("Film Category: " + filmCategory + "\n");
+        	bufferedWriter.write("Film Description: " + filmDescription + "\n");
+        	bufferedWriter.write("Film ID: " + newFilm.getFilmId() + "\n");
+        	bufferedWriter.write("\n"); // Add a newline separator between objects
+        	
+        	bufferedWriter.close();
+            fileWriter.close();
+            
+            System.out.println("Film data saved to Films.txt file.");
+        	} catch (IOException e) {
+            System.out.println("Failed to save film data to file: " + e.getMessage());
+        }
     }
 
     public void deleteFilm(int filmId) {
@@ -100,8 +120,25 @@ public class ContentAdmins extends Users {
 
         Cinemas newCinema = new Cinemas(cinemaIs3D,cinemaNumberOfSeats,cinemaLocation);
         cinemas.add(newCinema);
-
+        
         System.out.println("A new Cinema with Id " + newCinema.getCinemaId() +" located in "+ newCinema.getCinemaLocation() + " was inserted!");
+        
+     // Save film data to txt file
+        try (FileWriter fileWriter = new FileWriter("Cinemas.txt", true);
+        	BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
+        	bufferedWriter.write("Cinema ID: " + newCinema.getCinemaId() + "\n");
+            bufferedWriter.write("Cinema Location: " + cinemaLocation + "\n");
+            bufferedWriter.write("Is Cinema 3D: " + (cinemaIs3D ? "Yes" : "No") + "\n");
+            bufferedWriter.write("Cinema Number of Seats: " + cinemaNumberOfSeats + "\n");
+        	bufferedWriter.write("\n"); // Add a newline separator between objects
+        	
+        	bufferedWriter.close();
+            fileWriter.close();
+            
+            System.out.println("Cinema data saved to Cinemas.txt file.");
+        	} catch (IOException e) {
+            System.out.println("Failed to save film data to file: " + e.getMessage());
+        }
     }
 
     public void assignFilmToCinema() {
@@ -148,4 +185,5 @@ public class ContentAdmins extends Users {
         selectedCinema.addFilm(selectedFilm);
         System.out.println("The film " + selectedFilm.getFilmTitle() + " was assigned to cinema " + selectedCinema.getCinemaId());
     }
+  
 }

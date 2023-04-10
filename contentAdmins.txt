@@ -2,3 +2,23 @@ Name: John
 Username: john123
 Password: John123!John
 Email: john@gmail.com
+Name: name
+Username: name
+Password: 123name!K
+Email: name@name.com
+
+Name: Julie
+Username: julie12
+Password: julie123!J
+Email: julie@gmail.com
+
+Name: Heka
+Username: hekaols
+Password: heka213!Sd
+Email: heka@webtest.com
+
+Name: poas
+Username: poas2323
+Password: Poas123!s
+Email: poas@klds.com
+

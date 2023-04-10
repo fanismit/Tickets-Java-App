@@ -18,11 +18,7 @@ public class Main {
         int role, action;
         Scanner roleInput = new Scanner(System.in);
         Scanner actionInput = new Scanner(System.in);
-        ContentAdmins c1 = new ContentAdmins();
-        c1.insertCinema();
-        c1.insertFilm();
-        c1.assignFilmToCinema();
-        //c1.deleteFilm();
+
         boolean MenuIsRunning= false;
 
         while(!MenuIsRunning){
@@ -33,12 +29,13 @@ public class Main {
             switch (role){
                 case 1:
                     Customers customer = new Customers();
+                    //customer.makeReservation();
                     //customer.login();
                     // if login successfully continue
                     //else go back to menu
                     System.out.println("Customer Option Selected!");
                     System.out.println("######### Customer Options Menu #########");
-                    System.out.println("Please, select your action:\n1) Show Available Films\2) Make Reservation\n3) View Reservation");
+                    System.out.println("Please, select your action:\n1) Show Available Films\n2) Make Reservation\n3) View Reservation");
                     action = actionInput.nextInt();
 
                     switch (action){
@@ -130,7 +127,7 @@ public class Main {
                             return;
                     }
                     MenuIsRunning=true;
-                    saveToFile(contentadmins, "contentAdmins.txt");
+                   //saveToFile(contentadmins, "contentAdmins.txt");
                     break;
                 default:
                     return;

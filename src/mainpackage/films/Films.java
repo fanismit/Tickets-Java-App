@@ -1,8 +1,12 @@
 package mainpackage.films;
 
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.IOException;
+
 public class Films {
     // Attributes
-    private static int nextId = 0;
+    private static int nextId =0;
     private final int filmId;
     private String filmTitle;
     private String filmCategory;
@@ -10,12 +14,17 @@ public class Films {
 
     // Constructor
     public Films(String filmTitle, String filmCategory, String filmDescription) {
+    	updateNetxId();
         this.filmId = nextId++;
         this.filmTitle = filmTitle;
         this.filmCategory = filmCategory;
         this.filmDescription = filmDescription;
+        
     }
 
+    
+
+    
     // Getters
     public int getFilmId() {
         return filmId;
@@ -49,5 +58,24 @@ public class Films {
     public void viewAllFilms() {
         System.out.println("Viewing all films.");
     }
+    public void updateNetxId() {
+   	 // Read Films.txt file
+       try (BufferedReader br = new BufferedReader(new FileReader("Films.txt"))) {
+           String line;
+           String lastFilmId = "";
+           while ((line = br.readLine()) != null) {
+               if (line.contains("Film ID:")) {
+                   lastFilmId = line.substring(line.indexOf(":") + 1).trim();
+               }
+           }
 
+           // Update nextId with last film ID
+           if (!lastFilmId.isEmpty()) {
+               nextId = Integer.parseInt(lastFilmId) + 1;
+           }
+
+       } catch (IOException e) {
+           e.printStackTrace();
+       }
+   }
 }
