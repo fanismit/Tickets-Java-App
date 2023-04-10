@@ -21,8 +21,8 @@ public class Main {
 
         boolean MenuIsRunning= false;
 
+        System.out.println("######### Ticket-Seats Manager #########");
         while(!MenuIsRunning){
-            System.out.println("######### Ticket-Seats Manager #########");
             // Ask for input and validate it
             role = checkIntegerInputs("Please, select your role:\n1)Customer\n2)Admin\n3)ContentAdmin");
 
@@ -141,7 +141,7 @@ public class Main {
                 role = roleInput.nextInt();
                 break;
             } catch (Exception e) {
-                System.out.println("Invalid input. Please enter a valid selection.");
+                System.out.println("Invalid input. Please enter a number.");
                 roleInput.next(); // consume the invalid input
             }
         }
