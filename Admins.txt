@@ -8,3 +8,8 @@ Username: marry23
 Password: Marry123!
 Email: marry23@gmail.com
 
+Name: Nick
+Username: Nick22
+Password: Nick222!
+Email: Nick@gmail.com
+

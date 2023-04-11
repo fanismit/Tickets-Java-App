@@ -1,0 +1,5 @@
+Name: fanis
+Username: fanis123
+Password: Fanis123!
+Email: fanis@gmail.com
+

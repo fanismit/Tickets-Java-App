@@ -29,6 +29,7 @@ public class Main {
             switch (role){
                 case 1:
                     Customers customer = new Customers();
+                    saveToFile(customer, "Customers.txt");
                     //customer.makeReservation();
                     //customer.login();
                     // if login successfully continue

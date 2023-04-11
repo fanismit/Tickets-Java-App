@@ -2,10 +2,13 @@ package mainpackage.users;
 
 import mainpackage.cinemas.Cinemas;
 import mainpackage.films.Films;
+import mainpackage.provoles.Provoles;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -16,6 +19,7 @@ public class ContentAdmins extends Users {
     private final int adminId;
     private ArrayList<Films> films = new ArrayList();
     private ArrayList<Cinemas> cinemas = new ArrayList();
+    private ArrayList<Provoles> provoles = new ArrayList();
     private static Scanner input = new Scanner(System.in);
     // Constructor
     public ContentAdmins() {
@@ -123,7 +127,7 @@ public class ContentAdmins extends Users {
         
         System.out.println("A new Cinema with Id " + newCinema.getCinemaId() +" located in "+ newCinema.getCinemaLocation() + " was inserted!");
         
-     // Save cinema data to txt file
+     // Save film data to txt file
         try (FileWriter fileWriter = new FileWriter("Cinemas.txt", true);
         	BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
         	bufferedWriter.write("Cinema ID: " + newCinema.getCinemaId() + "\n");
@@ -181,9 +185,48 @@ public class ContentAdmins extends Users {
             return;
         }
 
+        System.out.println("Enter the start date of the film ");
+        
+        
+        LocalDate provoliStartDate= dateInput("Enter a date (like 3/3/17): ");
+        
+        System.out.println("Enter the end date of the film "); // Μία εξάιρεση αν δωθεί end πριν το start
+        
+        LocalDate provoliEndDate= dateInput("Enter a date (like 3/3/17): ");
+        
+        Provoles provoli = new Provoles(selectedFilm,selectedCinema,provoliStartDate,provoliEndDate,0,true);
         // Assign film to cinema
+        provoles.add(provoli);
         selectedCinema.addFilm(selectedFilm);
-        System.out.println("The film " + selectedFilm.getFilmTitle() + " was assigned to cinema " + selectedCinema.getCinemaId());
+        
+        try (FileWriter fileWriter = new FileWriter("Provoles.txt", true);
+            	BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
+            	bufferedWriter.write("Provoli ID: " + provoli.getProvoliID() + "\n");
+                bufferedWriter.write("Cinema Location: " + selectedCinema.getCinemaId() + "\n");
+                bufferedWriter.write("Start date " + provoli.getProvoliStartDate()+ "\n");
+                bufferedWriter.write("End date: " + provoli.getProvoliEndDate() + "\n");
+                bufferedWriter.write("Number of reservations : 0 \n");
+                bufferedWriter.write("Available : true \n");
+            	bufferedWriter.write("\n"); // Add a newline separator between objects
+            	
+            	bufferedWriter.close();
+                fileWriter.close();
+                
+                System.out.println("Cinema data saved to Provoles.txt file, and "+"The film " + selectedFilm.getFilmTitle() + " was assigned to cinema " + selectedCinema.getCinemaId());
+            	} catch (IOException e) {
+                System.out.println("Failed to save provoli data to file: " + e.getMessage());
+            }
+        
+    }
+    public static LocalDate dateInput(String userInput) {
+
+
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("M/d/yyyy");
+        LocalDate date = LocalDate.parse(userInput, dateFormat);
+
+
+        System.out.println(date);
+        return date ;
     }
   
 }
