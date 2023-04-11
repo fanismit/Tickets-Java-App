@@ -123,7 +123,7 @@ public class ContentAdmins extends Users {
         
         System.out.println("A new Cinema with Id " + newCinema.getCinemaId() +" located in "+ newCinema.getCinemaLocation() + " was inserted!");
         
-     // Save film data to txt file
+     // Save cinema data to txt file
         try (FileWriter fileWriter = new FileWriter("Cinemas.txt", true);
         	BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
         	bufferedWriter.write("Cinema ID: " + newCinema.getCinemaId() + "\n");
