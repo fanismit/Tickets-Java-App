@@ -1,6 +1,7 @@
 package mainpackage.users;
 
 import mainpackage.cinemas.Cinemas;
+import java.io.File;
 import mainpackage.films.Films;
 import mainpackage.provoles.Provoles;
 
@@ -70,25 +71,58 @@ public class ContentAdmins extends Users {
         }
     }
 
-    public void deleteFilm(int filmId) {
-        Films filmToDelete = null;
+    public void deleteFilm() {
+        boolean validInput = false;
+        while (!validInput) {
+            System.out.println("Please enter the Film ID to delete:");
+            int filmIdToDelete = input.nextInt();
+            input.nextLine(); // Consume the newline character left by nextInt()
 
-        // Search for the film to be deleted inside the films array
-        for(Films film: films){
-            if (film.getFilmId() == filmId){
-                filmToDelete = film;
-                break;
+            try {
+                // Read the lines from Films.txt
+                ArrayList<String> lines = new ArrayList<>();
+                try (Scanner scanner = new Scanner(new File("Films.txt"))) {
+                    while (scanner.hasNextLine()) {
+                        lines.add(scanner.nextLine());
+                    }
+                }
+
+                // Search for the film ID in the lines
+                int index = -1;
+                for (int i = 0; i < lines.size(); i++) {
+                    if (lines.get(i).contains("Film ID: " + filmIdToDelete)) {
+                        index = i;
+                        break;
+                    }
+                }
+
+                // If film ID is found
+                if (index != -1) {
+                    // Delete the film ID and the previous 3 lines, as well as the next line
+                    for (int i = index + 1; i >= index - 3 && i >= 0; i--) {
+                        lines.remove(i);
+                    }
+
+                    // Write the updated lines back to Films.txt
+                    try (BufferedWriter writer = new BufferedWriter(new FileWriter("Films.txt"))) {
+                        for (String line : lines) {
+                            writer.write(line);
+                            writer.newLine();
+                        }
+                    }
+
+                    System.out.println("Film with ID " + filmIdToDelete + " was deleted successfully!");
+                    validInput = true;
+                } else {
+                    System.out.println("Film with ID " + filmIdToDelete + " not found!");
+                }
+            } catch (IOException e) {
+                System.out.println("Failed to delete film: " + e.getMessage());
             }
         }
-
-        // Check if film can be deleted
-        if(filmToDelete!=null){
-            films.remove(filmToDelete);
-            System.out.println("Film with Id "+filmId+" was deleted successfully!");
-        }else{
-            System.out.println("Film not found!");
-        }
     }
+
+
 
     public void insertCinema(){
 

@@ -1,10 +1,5 @@
 Cinema ID: 0
 Cinema Location: Athens
-Is Cinema 3D: Yes
-Cinema Number of Seats: 218
-
-Cinema ID: 1
-Cinema Location: Athens
 Is Cinema 3D: No
-Cinema Number of Seats: 12
+Cinema Number of Seats: 92
 

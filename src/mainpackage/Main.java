@@ -111,11 +111,11 @@ public class Main {
                             break;
                         case 2:
                             System.out.println("Delete Film Option Selected!");
-                            //contentadmins.updateUser();
+                            contentadmins.deleteFilm();
                             break;
                         case 3:
                             System.out.println("Insert cinema Option Selected!");
-                            contentadmins.insertCinema();
+                            //contentadmins.insertCinema();
                             break;
                         case 4:
                             System.out.println("Assign film to cinema Option Selected!");
