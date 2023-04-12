@@ -115,7 +115,7 @@ public class Main {
                             break;
                         case 3:
                             System.out.println("Insert cinema Option Selected!");
-                            //contentadmins.insertCinema();
+                            contentadmins.insertCinema();
                             break;
                         case 4:
                             System.out.println("Assign film to cinema Option Selected!");

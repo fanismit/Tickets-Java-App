@@ -2,6 +2,7 @@ package mainpackage.films;
 
 import java.io.FileReader;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 
 public class Films {
@@ -14,7 +15,7 @@ public class Films {
 
     // Constructor
     public Films(String filmTitle, String filmCategory, String filmDescription) {
-    	updateNetxId();
+    	updateNextId();
         this.filmId = nextId++;
         this.filmTitle = filmTitle;
         this.filmCategory = filmCategory;
@@ -58,24 +59,36 @@ public class Films {
     public void viewAllFilms() {
         System.out.println("Viewing all films.");
     }
-    public void updateNetxId() {
-   	 // Read Films.txt file
-       try (BufferedReader br = new BufferedReader(new FileReader("Films.txt"))) {
-           String line;
-           String lastFilmId = "";
-           while ((line = br.readLine()) != null) {
-               if (line.contains("Film ID:")) {
-                   lastFilmId = line.substring(line.indexOf(":") + 1).trim();
-               }
-           }
 
-           // Update nextId with last film ID
-           if (!lastFilmId.isEmpty()) {
-               nextId = Integer.parseInt(lastFilmId) + 1;
-           }
+    public void updateNextId() {
+        // Check if file exists
+        File file = new File("Films.txt");
+        if (!file.exists()) {
+            try {
+                // Create new file if it doesn't exist
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
-       } catch (IOException e) {
-           e.printStackTrace();
-       }
-   }
+        // Read FIlms.txt file
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+            String lastCinemaId = "";
+            while ((line = br.readLine()) != null) {
+                if (line.contains("Film ID:")) {
+                    lastCinemaId = line.substring(line.indexOf(":") + 1).trim();
+                }
+            }
+
+            // Update nextId with last film ID
+            if (!lastCinemaId.isEmpty()) {
+                nextId = Integer.parseInt(lastCinemaId) + 1;
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
