@@ -2,9 +2,12 @@ package mainpackage.users;
 
 import mainpackage.cinemas.Cinemas;
 import java.io.File;
+import java.io.FileReader;
+
 import mainpackage.films.Films;
 import mainpackage.provoles.Provoles;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -17,6 +20,7 @@ import java.util.Scanner;
 public class ContentAdmins extends Users {
     // Attributes
     private static int nextId = 0;
+    private static int provolinextId = 0;
     private final int adminId;
     private ArrayList<Films> films = new ArrayList();
     private ArrayList<Cinemas> cinemas = new ArrayList();
@@ -69,7 +73,13 @@ public class ContentAdmins extends Users {
         	} catch (IOException e) {
             System.out.println("Failed to save film data to file: " + e.getMessage());
         }
+        
+            System.out.println("Film Title: " + filmTitle );
+            System.out.println("Film Category: " + filmCategory );
+            System.out.println("Film Description: " + filmDescription );
+            System.out.println("Film ID: " + newFilm.getFilmId() );
     }
+    
 
     public void deleteFilm() {
         boolean validInput = false;
@@ -177,6 +187,10 @@ public class ContentAdmins extends Users {
         	} catch (IOException e) {
             System.out.println("Failed to save film data to file: " + e.getMessage());
         }
+        System.out.println("Cinema ID: " + newCinema.getCinemaId()) ;
+        System.out.println("Cinema Location: " + cinemaLocation );
+        System.out.println("Is Cinema 3D: " + (cinemaIs3D ? "Yes" : "No"));
+        System.out.println("Cinema Number of Seats: " + cinemaNumberOfSeats);
     }
 
     public void assignFilmToCinema() {
@@ -222,13 +236,13 @@ public class ContentAdmins extends Users {
         System.out.println("Enter the start date of the film ");
         
         
-        LocalDate provoliStartDate= dateInput("Enter a date (like 3/3/17): ");
+        LocalDate provoliStartDate= dateInput("Enter a date (like 3/3/2017): ");
         
         System.out.println("Enter the end date of the film "); // Μία εξάιρεση αν δωθεί end πριν το start
         
-        LocalDate provoliEndDate= dateInput("Enter a date (like 3/3/17): ");
+        LocalDate provoliEndDate= dateInput("Enter a date (like 3/3/2017): ");
         
-        Provoles provoli = new Provoles(selectedFilm,selectedCinema,provoliStartDate,provoliEndDate,0,true);
+        Provoles provoli = new Provoles(provolinextId, selectedFilm,selectedCinema,provoliStartDate,provoliEndDate,0,true);
         // Assign film to cinema
         provoles.add(provoli);
         selectedCinema.addFilm(selectedFilm);
@@ -252,6 +266,38 @@ public class ContentAdmins extends Users {
             }
         
     }
+    public void updateProvoliNextId() {
+        // Check if file exists
+        File file = new File("Provoles.txt");
+        if (!file.exists()) {
+            try {
+                // Create new file if it doesn't exist
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        // Read FIlms.txt file
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+            String lastProvoliId = "";
+            while ((line = br.readLine()) != null) {
+                if (line.contains("Provoli ID:")) {
+                    lastProvoliId = line.substring(line.indexOf(":") + 1).trim();
+                }
+            }
+
+            // Update nextId with last film ID
+            if (!lastProvoliId.isEmpty()) {
+            	provolinextId = Integer.parseInt(lastProvoliId) + 1;
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static LocalDate dateInput(String userInput) {
 
 

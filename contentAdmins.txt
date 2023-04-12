@@ -22,3 +22,8 @@ Username: poas2323
 Password: Poas123!s
 Email: poas@klds.com
 
+Name: lksd
+Username: name123wqw
+Password: lspdw123!lsA
+Email: test2@fks.gr
+

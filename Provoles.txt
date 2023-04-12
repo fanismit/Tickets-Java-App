@@ -1,0 +1,7 @@
+Provoli ID: 0
+Cinema Location: Athens
+Start date 2017-03-03
+End date: 2017-03-03
+Number of reservations : 0 
+Available : true 
+

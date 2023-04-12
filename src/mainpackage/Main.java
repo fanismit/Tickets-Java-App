@@ -30,8 +30,7 @@ public class Main {
                 case 1:
                     Customers customer = new Customers();
                     saveToFile(customer, "Customers.txt");
-                    //customer.makeReservation();
-                    //customer.login();
+                    //customer.login()
                     // if login successfully continue
                     //else go back to menu
                     System.out.println("Customer Option Selected!");
@@ -41,21 +40,24 @@ public class Main {
                     switch (action){
                         case 1:
                             System.out.println("Showing Available Films ...");
-                            //customer.showAvailableFilms();
+                            customer.showAvailableFilms(null);
                             break;
                         case 2:
                             System.out.println("Making a reservation ...");
-                            //customer.makeReservation();
+                            customer.makeReservation(null, 1);
                             break;
                         case 3:
                             System.out.println("View reservation ...");
-                            //customer.viewReservation();
+                            customer.viewReservation();
                             break;
                         default:
                             return;
                     }
                     // Menu for Customer (show available films, make reservation, update Info, ...)
                     MenuIsRunning=true;
+                    saveToFile(customer, "Customers.txt");
+
+                    displayCharacteristics(customer);
                     break;
                 case 2:
                     Admins admin = new Admins();
@@ -68,33 +70,35 @@ public class Main {
                     switch (action){
                         case 1:
                             System.out.println("Create user Option Selected!");
-                            //admin.createUser();
+                            admin.createUser(true);
                             break;
                         case 2:
                             System.out.println("Update user Option Selected!");
-                            //admin.updateUser();
+                            admin.updateUser();
                             break;
                         case 3:
                             System.out.println("Delete user Option Selected!");
-                            //admin.deleteUser();
+                            admin.deleteUser(null, null);
                             break;
                         case 4:
                             System.out.println("Search user Option Selected!");
-                            //admin.searchUser();
+                            admin.searchUser();
                             break;
                         case 5:
                             System.out.println("View all users user Option Selected!");
-                            //admin.viewAllUsers();
+                            admin.viewAllUsers();
                             break;
                         case 6:
                             System.out.println("Register Admin Option Selected!");
-                            //admin.registerAdmin();
+                            admin.registerAdmin();
                             break;
                         default:
                             return;
                     }
                     MenuIsRunning=true;
                     saveToFile(admin, "Admins.txt");
+
+                    displayCharacteristics(admin);
                     break;
                 case 3:
                     ContentAdmins contentadmins = new ContentAdmins();
@@ -107,7 +111,7 @@ public class Main {
                     switch (action){
                         case 1:
                             System.out.println("Insert Film Option Selected!");
-                            //contentadmins.insertFilm();
+                            contentadmins.insertFilm();
                             break;
                         case 2:
                             System.out.println("Delete Film Option Selected!");
@@ -115,17 +119,18 @@ public class Main {
                             break;
                         case 3:
                             System.out.println("Insert cinema Option Selected!");
-                            //contentadmins.insertCinema();
+                            contentadmins.insertCinema();
                             break;
                         case 4:
                             System.out.println("Assign film to cinema Option Selected!");
-                            //contentadmins.assignFilmToCinema();
+                            contentadmins.assignFilmToCinema();
                             break;
                         default:
                             return;
                     }
                     MenuIsRunning=true;
-                    //saveToFile(contentadmins, "contentAdmins.txt");
+                    saveToFile(contentadmins, "contentAdmins.txt");
+                    displayCharacteristics(contentadmins);
                     break;
                 default:
                     System.out.println("Invalid input. Please enter a valid selection.");
@@ -168,5 +173,13 @@ public class Main {
             System.out.println("Error occurred while saving object to " + filename);
             e.printStackTrace();
         }
+    }
+    public static void displayCharacteristics(Users users) {
+
+            // Write the object data to the file
+            System.out.println("Name: " + users.getName() );
+            System.out.println("Username: " + users.getUsername() );
+            System.out.println("Password: " + users.getPassword());
+            System.out.println("Email: " + users.getEmail());
     }
 }
